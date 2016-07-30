@@ -6,14 +6,14 @@ Given(/^I am in the inbox page$/) do
   visit mailbox_inbox_path
 end
 
-Then(/^I should see a "([^"]*)" button$/) do |content|
-  expect(page).to have_content content
-end
-
-Then(/^I should be in the conversation page$/) do
+Then(/^I should be in the writing page$/) do
   expect(page.current_path).to eq new_conversation_path
 end
 
-Then(/^show me the page$/) do
-  save_and_open_page
+Then(/^I select "([^"]*)" as "([^"]*)"$/) do |value, options|
+  select(value, options={})
+end
+
+Then(/^I should be on the conversation page$/) do
+  expect(page.current_path).to eq conversation_path(:id => 6)
 end
